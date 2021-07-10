@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema ../Binaries/iiko/Manifest.xsd">
+	<FileName>iikoWeather.dll</FileName>
+	<TypeName>iikoWeather.CustomControl1</TypeName>
+	<ApiVersion>No</ApiVersion>
+</Manifest>

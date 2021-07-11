@@ -1,59 +1,57 @@
-﻿using JetBrains.Annotations;
-using Resto.Front.Api.Attributes;
+﻿using iikoWeather.Models;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace iikoWeather
 {
-    [UsedImplicitly]
-    [PluginLicenseModuleId(21016318)]
     public partial class Window2 : Window
     {
-        private DispatcherTimer aTimer;
+ 
+        public string data;
+        public string text;
         public Window2()
         {
             InitializeComponent();
-        }
-        public void Weather()
-        {
-            GetWeather();
-            aTimer = new DispatcherTimer();
-            aTimer.Tick += new EventHandler(OnTimedEvent);
-            aTimer.Interval = TimeSpan.FromSeconds(1); //300 seconds = 5 minutes
-            aTimer.Start();
-        }
-        private void OnTimedEvent(object sender, EventArgs e)
-        {
-            GetWeather();
-        }
-        public void GetWeather()
-        {
-
-            //string data;
-            //string url = "https://api.openweathermap.org/data/2.5/weather?q=Saint+Petersburg&units=metric&appid=f635a4a5f497a9b8a43ac6a232f014d9";
-            //WebRequest weatherRequest = WebRequest.Create(url);
-            //WebResponse weatherResponse = weatherRequest.GetResponse();
-            //using (StreamReader read = new StreamReader(weatherResponse.GetResponseStream()))
-            //{
-            //    data = read.ReadToEnd();
-            //}
-            //WeatherResponse weather = JsonConvert.DeserializeObject<WeatherResponse>(data);
-            //txtBox.Text = $"{weather.Name} \n {weather.Main.Temp} °C";
             
             txtBox.Text = $"{DateTime.Now}";
             popText.Text = $"{DateTime.UtcNow}";
+            DispatcherTimer aTimer;
+            aTimer = new DispatcherTimer();
+            aTimer.Tick += new EventHandler(GetWeather);
+            aTimer.Interval = TimeSpan.FromSeconds(300); //300 seconds = 5 minutes
+            aTimer.Start();
+        }
+        public void GetWeather(object send, EventArgs e)
+        {
+
+            string url = "https://api.openweathermap.org/data/2.5/weather?q=Saint+Petersburg&units=metric&appid=f635a4a5f497a9b8a43ac6a232f014d9";
+            WebRequest weatherRequest = WebRequest.Create(url);
+            WebResponse weatherResponse = weatherRequest.GetResponse();
+            using (StreamReader read = new StreamReader(weatherResponse.GetResponseStream()))
+            {
+                data = read.ReadToEnd();
+            }
+            WeatherResponse weather = JsonConvert.DeserializeObject<WeatherResponse>(data);
+            txtBox.Text = $"{weather.Name}\n {weather.Main.Temp} °C";
+            popText.Text = $"{weather.Name}\n {weather.Main.Temp} °C";
+            text = $"{weather.Name}\n {weather.Main.Temp}";
+
+            weatherPop.IsOpen = true;
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(30);
+            timer.Tick += TimerTick;
+            timer.Start();
+        }
+        private void TimerTick(object sender, EventArgs e)
+        {
+            DispatcherTimer timer = (DispatcherTimer)sender;
+            timer.Stop();
+            timer.Tick -= TimerTick;
+            weatherPop.IsOpen = false;
         }
     }
 }

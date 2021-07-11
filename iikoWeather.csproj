@@ -32,20 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=2021.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>packages\JetBrains.Annotations.2021.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Resto.Front.Api.V6, Version=7.0.6022.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Resto.Front.Api.V6.7.0.6022.0\lib\net472\Resto.Front.Api.V6.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.PowerShell.5.ReferenceAssemblies.1.1.0\lib\net4\System.Management.Automation.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -96,6 +87,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="packages\Newtonsoft.Json.13.0.1\.signature.p7s" />
+    <None Include="packages\Newtonsoft.Json.13.0.1\LICENSE.md" />
+    <None Include="packages\Newtonsoft.Json.13.0.1\Newtonsoft.Json.13.0.1.nupkg" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +97,23 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="weather.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\Newtonsoft.Json.13.0.1\lib\net20\Newtonsoft.Json.dll" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.1\lib\net35\Newtonsoft.Json.dll" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.1\lib\netstandard1.0\Newtonsoft.Json.dll" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.1\lib\netstandard1.3\Newtonsoft.Json.dll" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\lib\netstandard1.3\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.xml" />
+    <Resource Include="packages\Newtonsoft.Json.13.0.1\packageIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

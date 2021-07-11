@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,14 +15,22 @@ namespace iikoWeather
         
     public class CustomControl1 : Control
     {
+
         
+
         static CustomControl1()
         {
+         
             
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl1), new FrameworkPropertyMetadata(typeof(CustomControl1)));
             Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                double timeUpdate = double.Parse(Properties.Settings.Default.UpdateTime);
+                ExeConfigurationFileMap map = new ExeConfigurationFileMap();
+                map.ExeConfigFilename = Assembly.GetExecutingAssembly().Location + ".config";
+                Configuration libConfig = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+                AppSettingsSection section = libConfig.GetSection("appSettings") as AppSettingsSection;
+                double timeUpdate = double.Parse(section.Settings["UpdateTime"].Value);
+
                 var win = new Window2();
                 win.Owner = Application.Current.MainWindow;
                 win.GetWeather();

@@ -22,17 +22,5 @@ namespace iikoWeather.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public string UpdateTime {
-            get {
-                return ((string)(this["UpdateTime"]));
-            }
-            set {
-                this["UpdateTime"] = value;
-            }
-        }
     }
 }

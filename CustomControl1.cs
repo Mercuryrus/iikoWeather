@@ -16,23 +16,23 @@ namespace iikoWeather
         static CustomControl1()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl1), new FrameworkPropertyMetadata(typeof(CustomControl1)));
-            Window window = new Window2();
-            window.ShowActivated = true;
-
-            //HwndSourceParameters parameters = new HwndSourceParameters();
-            //parameters.WindowStyle = 0x10000000 | 0x40000000;
-            //parameters.SetPosition(0, 0);
-            //parameters.SetSize((int)window.Width, (int)window.Height);
-            //parameters.ParentWindow = Process.GetCurrentProcess().MainWindowHandle;
-            //parameters.UsesPerPixelOpacity = true;
-            //HwndSource src = new HwndSource(parameters);
-            //src.CompositionTarget.BackgroundColor = Colors.Transparent;
-            //src.RootVisual = (Visual)window.Content;
-
+            
             Application.Current.Dispatcher.InvokeAsync(() =>
             {
                 var win = new Window2();
+                win.Owner = Application.Current.MainWindow;
+                win.GetWeather();
                 win.Show();
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Tick += Update;
+                timer.Interval = TimeSpan.FromSeconds(300);
+                timer.Start();
+            
+            void Update(object sender, EventArgs e)
+            {
+                win.GetWeather();
+                
+            }
             });
         }
     }

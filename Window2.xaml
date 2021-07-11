@@ -5,9 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:iikoWeather"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="60" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" Visibility="Visible" AllowsTransparency="True" WindowStyle="None" ScrollViewer.VerticalScrollBarVisibility="Disabled" UseLayoutRounding="False" ShowInTaskbar="False" ResizeMode="NoResize" Topmost="True" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" MaxWidth="60" MaxHeight="60" Width="60" Height="60" IsHitTestVisible="False" AutomationProperties.IsOffscreenBehavior="Onscreen" IsManipulationEnabled="True"  >
+             d:DesignHeight="60" d:DesignWidth="60" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                Background="{x:Null}" Visibility="Visible" AllowsTransparency="True"
+                                WindowStyle="None" ScrollViewer.VerticalScrollBarVisibility="Disabled" UseLayoutRounding="False" 
+                                ShowInTaskbar="False" ResizeMode="NoResize" Topmost="False" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" 
+                                MaxWidth="60" MaxHeight="60" Width="60" Height="60" Focusable="False" AutomationProperties.IsOffscreenBehavior="Onscreen" 
+                                IsManipulationEnabled="True" WindowStartupLocation="Manual" Left="50" Top="100">
     <Window.Resources>
-        <Style x:Key="ButtonFocusStyle" TargetType="Button">
+        <Style x:Key="ButtonFocusStyle" TargetType="Button"> 
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -19,31 +24,21 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
-        <Button x:Name="button" Style="{DynamicResource ButtonFocusStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50">
+    <DockPanel>
+        <Button DockPanel.Dock="Left" x:Name="button" Style="{DynamicResource ButtonFocusStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="50">
             <Button.Background>
                 <ImageBrush ImageSource="weather.png" TileMode="None" Stretch="Fill"/>
             </Button.Background>
-            <Button.ToolTip>
-                <ToolTip Placement="Right" HorizontalOffset="20" BorderBrush="Transparent">
-                    <StackPanel>
-                        <TextBlock x:Name="txtBox" Margin="3" FontSize="20" FontFamily="Times New Roman" FontWeight="ExtraBold" TextOptions.TextFormattingMode="Display" SnapsToDevicePixels="False"></TextBlock>
-                    </StackPanel>
-                </ToolTip>
-            </Button.ToolTip>
         </Button>
-        <Popup x:Name="weatherPop" StaysOpen="False" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0.5" Visibility="Hidden" AllowsTransparency="True" PopupAnimation="Slide" Placement="Bottom">
-            <TextBlock x:Name="popText" Width="200" Height="100" FontSize="20" FontFamily="Times New Roman" FontWeight="ExtraBold" TextAlignment="Center">
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="Black" Opacity="2"/>
-                </TextBlock.Foreground>
+        <Popup DockPanel.Dock="Left" x:Name="weatherPop" StaysOpen="False" HorizontalAlignment="Left" VerticalAlignment="Top"
+               Opacity="0.5" Visibility="Hidden" AllowsTransparency="True" PopupAnimation="Slide" Placement="Bottom">
+            <TextBlock x:Name="popText" Width="240" Height="70" FontSize="30" FontFamily="Times New Roman" FontWeight="ExtraBold" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" 
+                       TextAlignment="Center">
                 <TextBlock.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.5">
-                        <GradientStop Color="Black" Offset="1"/>
-                        <GradientStop Color="#FF00FFDC"/>
-                    </LinearGradientBrush>
+                    <SolidColorBrush Color="Black" Opacity="0.4"/>
                 </TextBlock.Background>
             </TextBlock>
         </Popup>
-    </Grid>
+    </DockPanel>
 </Window>

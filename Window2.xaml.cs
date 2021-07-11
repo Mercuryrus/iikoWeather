@@ -35,7 +35,7 @@ namespace iikoWeather
             
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromSeconds(30);
             timer.Tick += Close;
             timer.Start();
             weatherPop.IsOpen = true;

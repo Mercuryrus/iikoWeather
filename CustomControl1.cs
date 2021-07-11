@@ -35,6 +35,8 @@ namespace iikoWeather
                 win.Owner = Application.Current.MainWindow;
                 win.GetWeather();
                 win.Show();
+
+                
                 DispatcherTimer timer = new DispatcherTimer();
                 timer.Tick += Update;
                 timer.Interval = TimeSpan.FromMinutes(timeUpdate);

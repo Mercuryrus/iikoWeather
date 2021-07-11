@@ -20,7 +20,6 @@ namespace iikoWeather
         }
         public void GetWeather()
         {
-            var timeUpdate = double.Parse(Properties.Settings.Default.UpdateTime);
             string data;            
             string url = "https://api.openweathermap.org/data/2.5/weather?q=Saint+Petersburg&units=metric&appid=f635a4a5f497a9b8a43ac6a232f014d9";
             WebRequest weatherRequest = WebRequest.Create(url);

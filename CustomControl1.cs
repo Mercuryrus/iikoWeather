@@ -30,13 +30,14 @@ namespace iikoWeather
                 Configuration libConfig = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
                 AppSettingsSection section = libConfig.GetSection("appSettings") as AppSettingsSection;
                 double timeUpdate = double.Parse(section.Settings["UpdateTime"].Value);
-
+                //Это код? Это баг? Нет, это ... это полное дерьмо, Эндрю... когда я смогу спать хотя бы по ночам?
+                //тестовое тестовое тестовое еще тестовое... да вы серьёзно? А зачем если на техничке вы спросите "А что такое ООП?"
                 var win = new Window2();
-                win.Owner = Application.Current.MainWindow;
+                win.Owner = Application.Current.MainWindow;//А насколько важно знание определения и парадигм ООП для разработчика?(вот сейчас правда интересно)
                 win.GetWeather();
                 win.Show();
 
-                
+                //ну тут таймер.. ваааааууу таймер.. ни*!" ж себе, не вы видели он таймер сделал...
                 DispatcherTimer timer = new DispatcherTimer();
                 timer.Tick += Update;
                 timer.Interval = TimeSpan.FromMinutes(timeUpdate);

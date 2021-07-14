@@ -31,7 +31,9 @@ namespace iikoWeather
                 AppSettingsSection section = libConfig.GetSection("appSettings") as AppSettingsSection;
                 double timeUpdate = double.Parse(section.Settings["UpdateTime"].Value);
                 //Это код? Это баг? Нет, это ... это полное дерьмо, Эндрю... когда я смогу спать хотя бы по ночам?
-                //тестовое тестовое тестовое еще тестовое... да вы серьёзно? А зачем если на техничке вы спросите "А что такое ООП?"
+                //тестовое тестовое тестовое еще тестовое...
+                
+                
                 var win = new Window2();
                 win.Owner = Application.Current.MainWindow;//А насколько важно знание определения и парадигм ООП для разработчика?(вот сейчас правда интересно)
                 win.GetWeather();
@@ -42,7 +44,9 @@ namespace iikoWeather
                 timer.Tick += Update;
                 timer.Interval = TimeSpan.FromMinutes(timeUpdate);
                 timer.Start();
-            
+            //да я знаю что вы смотрите этот код, да я не учился этому в ВУЗе 5 лет
+            //эта жопа в огнееее и нам некуда больше бежать
+            //отсылка... мда..
             void Update(object sender, EventArgs e)
             {
                 win.GetWeather();
